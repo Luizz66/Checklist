@@ -1,0 +1,199 @@
+body {
+  margin: 0;
+  font-family: "ubuntu", sans-serif;
+}
+
+section {
+  width: 100% - 20px;
+  min-height: calc(100vh - 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  border: 20px solid var(--black);
+  background-color: var(--black2);
+}
+
+.box-git {
+  display: flex;
+  align-self: start;
+  margin: 1.2rem 0 0 1.2rem;
+  background-color: var(--black2);
+}
+
+#github-icon {
+  font-size: 1.9rem;
+  color: var(--white);
+  transition: 0.3s;
+}
+
+#github-icon:hover {
+  scale: 1.06;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  margin-top: -6rem;
+  gap: 4rem;
+}
+
+.title {
+  font-size: 3rem;
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-add-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.2rem;
+  flex-wrap: wrap;
+  margin-top: -5rem;
+}
+
+.input-item,
+.btn-add-item {
+  border: none;
+  font-size: 1rem;
+  font-family: "ubuntu", sans-serif;
+  outline: none;
+  padding: 1rem;
+}
+
+.input-item {
+  width: 20rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+
+.btn-add-item {
+  width: 55px;
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  border-radius: 100%;
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: var(--black-light);
+}
+
+.btn-add-item:hover {
+  background-color: var(--gray);
+}
+
+#add-icon {
+  font-size: 154%;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 1rem;
+  padding: 0;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  list-style-type: none;
+  border-radius: 0.6rem;
+  color: var(--white);
+}
+
+.list li:hover {
+  background-color: var(--black-light2);
+  padding: 0 0.9px 0 0.8px;
+}
+
+.checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  scale: 1.1;
+  position: relative;
+  margin-right: 1rem;
+  border: 2px solid var(--white);
+  border-radius: 100%;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.checkbox:hover {
+  background-color: var(--gray);
+}
+
+.checkbox:checked {
+  background-color: var(--green);
+  border: 2px solid var(--green);
+}
+
+.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 32%;
+  width: 7px;
+  height: 17px;
+  scale: 1.1;
+  border: solid var(--black-light);
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
+
+.checked {
+  text-decoration: line-through;
+  color: var(--gray-light) !important;
+}
+
+.btn-delete {
+  border: none;
+  padding: 0.4rem;
+  margin-left: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  cursor: pointer;
+  scale: 1.04;
+}
+
+li .btn-delete {
+  margin-left: auto;
+}
+
+#delete-icon {
+  font-size: 1.5rem;
+  transition: 0.2s;
+  color: var(--white);
+}
+
+.btn-delete:hover {
+  #delete-icon {
+    color: var(--red);
+  }
+}
+
+/* RESPONSIVIDADE */
+
+/* UTILITÁRIAS */
+:root {
+  --black: #000000;
+  --black2: #161616;
+  --black-light: #2a2a2a;
+  --black-light2: #191919;
+  --gray: #525252;
+  --gray-light: #9c9c9c;
+  --white: #ffffff;
+  --green: #00e000;
+  --red: #ff4b4bcb;
+}

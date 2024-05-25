@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="imagex/png" href="/img/list-outline.svg" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./fonts/fonts.css" />
+
+    <title>Checklist</title>
+  </head>
+
+  <body>
+    <section>
+      <div class="box-git">
+        <a href="https://github.com/Luizz66"
+          ><ion-icon name="logo-github" id="github-icon"></ion-icon
+        ></a>
+      </div>
+      <div class="content">
+        <div class="title">
+          <h1>Checklist</h1>
+        </div>
+        <div class="content-add-item">
+          <input
+            type="text"
+            class="input-item"
+            placeholder="Digite sua nova tarefa..."
+          />
+          <button class="btn-add-item" onclick="Add()">
+            <ion-icon name="add-outline" id="add-icon"></ion-icon>
+          </button>
+        </div>
+        <div class="content-body">
+          <ul class="list" id="listID"></ul>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <script src="script.js"></script>
+  <script
+    type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+  ></script>
+  <script
+    nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+  ></script>
+</html>
