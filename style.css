@@ -61,7 +61,7 @@ section {
   font-size: 3rem;
   color: var(--white);
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -141,8 +141,8 @@ section {
 }
 
 .list li:hover {
-  background-color: var(--black3);
-  padding: 0 1px 0 1px;
+  background-color: var(--black-light);
+  padding: 0 0.9px 0 0.7px;
 }
 
 .list-items-light {
