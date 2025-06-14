@@ -1,39 +1,76 @@
-var checkBox = document.createElement("input");
-checkBox.type = "checkbox";
-checkBox.className = "checkbox";
+let items = JSON.parse(localStorage.getItem("checklistItems")) || [];
 
-var btnDelete = document.createElement("button");
-btnDelete.className = "btn-delete";
-const icon = document.createElement("ion-icon");
-icon.id = "delete-icon";
-icon.setAttribute("name", "trash-outline");
-btnDelete.prepend(icon);
+function loadItems() {
+  document.querySelector(".list").innerHTML = "";
+  items.forEach((item, index) => {
+    const li = document.createElement("li");
 
-btnDelete.setAttribute("onclick", "this.parentElement.remove()");
+    const checkBox = document.createElement("input");
+    checkBox.type = "checkbox";
+    checkBox.className = "checkbox";
+    checkBox.checked = item.checked;
+
+    checkBox.addEventListener("click", () => {
+      li.classList.toggle("checked");
+      items[index].checked = checkBox.checked;
+      saveItems();
+    });
+
+    if (item.checked) {
+      li.classList.add("checked");
+    }
+
+    const btnDelete = document.createElement("button");
+    btnDelete.className = "btn-delete";
+    const icon = document.createElement("ion-icon");
+    icon.id = "delete-icon";
+    icon.setAttribute("name", "trash-outline");
+    btnDelete.appendChild(icon);
+
+    btnDelete.addEventListener("click", () => {
+      removeItem(index);
+    });
+
+    li.appendChild(checkBox);
+    li.appendChild(document.createTextNode(item.text));
+    li.appendChild(btnDelete);
+
+    document.querySelector(".list").appendChild(li);
+  });
+}
 
 const Add = () => {
   const input = document.querySelector(".input-item").value;
   if (input === "") {
     alert("Adicione uma tarefa!");
   } else {
-    const li = document.createElement("li");
-    li.innerHTML = checkBox.outerHTML + input + btnDelete.outerHTML;
-    document.querySelector(".list").appendChild(li);
+    items.push({ text: input, checked: false });
     document.querySelector(".input-item").value = "";
-  }
-  if (tema_icon.name === "moon") {
-    light();
-  }
-  if (tema_icon.name === "sunny-outline") {
-    dark();
+    saveItems();
+    loadItems();
+    if (tema_icon.name === "sunny-outline") {
+      dark();
+    } else if (tema_icon.name === "moon") {
+      light();
+    }
   }
 };
 document.querySelector(".btn-add-item").addEventListener("click", Add);
 
-checkBox.setAttribute(
-  "onclick",
-  "this.parentElement.classList.toggle('checked')"
-);
+function removeItem(index) {
+  items.splice(index, 1);
+  saveItems();
+  loadItems();
+  if (tema_icon.name === "sunny-outline") {
+    dark();
+  } else if (tema_icon.name === "moon") {
+    light();
+  }
+}
+
+function saveItems() {
+  localStorage.setItem("checklistItems", JSON.stringify(items));
+}
 
 // css
 var tema_icon = document.getElementById("tema-icon");
@@ -45,6 +82,8 @@ var input_item = document.querySelector(".input-item");
 var btn_add_item = document.querySelector(".btn-add-item");
 
 function light() {
+  localStorage.setItem("theme", "light");
+
   tema_icon.setAttribute("name", "moon");
   section.setAttribute("class", "section-light");
   box_icons.style.backgroundColor = "var(--white2)";
@@ -72,6 +111,8 @@ function light() {
 }
 
 function dark() {
+  localStorage.setItem("theme", "dark");
+
   tema_icon.setAttribute("name", "sunny-outline");
   section.setAttribute("class", "section");
   box_icons.style.backgroundColor = "var(--black2)";
@@ -106,3 +147,15 @@ tema_icon.addEventListener("click", () => {
     dark();
   }
 });
+
+loadItems();
+
+window.onload = () => {
+  loadItems();
+  const theme = localStorage.getItem("theme");
+  if (theme === "light") {
+    light();
+  } else {
+    dark();
+  }
+};

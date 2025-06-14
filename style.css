@@ -10,8 +10,8 @@ section {
   flex-direction: column;
   align-items: center;
   gap: 4rem;
-  border: 20px solid var(--black);
   background-color: var(--black2);
+  border: 20px solid var(--black);
 }
 
 .section-light {
@@ -47,7 +47,7 @@ section {
 }
 
 #github-icon:hover {
-  scale: 1.06;
+  scale: 1.04;
 }
 
 .content {
